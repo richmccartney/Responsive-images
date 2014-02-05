@@ -1,8 +1,8 @@
 jQuery(document).ready(function($) {
 
-	var screenSize = '';
+    var screenSize = '';
 
-	// Detect current devices width
+    // Detect current devices width
     function checkWidth() {
 
         var windowSize = window.screen.width;
@@ -17,22 +17,21 @@ jQuery(document).ready(function($) {
             screenSize = 'default';
         }
 
-        console.log(windowSize);
-        console.log(screenSize);
     }
 
+    // Sets the correct image based on screen size
     function setImage() {
 
-		var images = $('img');
+        var images = $('img');
 
-		images.each(function() {
-			var self = $(this),
-			    newSrc = self.data(screenSize);
+        images.each(function() {
+            var self = $(this),
+                newSrc = self.data(screenSize);
 
-			console.log(newSrc);
+            console.log(newSrc);
 
-			self.attr('src', newSrc);
-		});
+            self.attr('src', newSrc);
+        });
 
     }
 
@@ -40,12 +39,4 @@ jQuery(document).ready(function($) {
     checkWidth();
     setImage();
 
-    // Bind event listener
-    $(window).resize(checkWidth, setImage);
-
-    if (window.DeviceOrientationEvent) {
-
-		window.addEventListener('orientationchange', checkWidth, setImage, false);
-
-	}
 });
